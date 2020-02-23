@@ -1,15 +1,15 @@
-package combibation.producer;
+package combibation.producer.model;
 
 import java.util.*;
 
-public class CombinationFactory
+public class CombinationGenerator
 {
-    private CombinationFactory()
+    private CombinationGenerator()
     {
     }
 
     @SafeVarargs
-    public static <T> List<List<T>> generateOnOffCombination(T emptyValue, T... values)
+    public static <T> List<List<T>> generateOnOffCombination(T disabledValue, T... values)
     {
         if (values.length == 0)
         {
@@ -38,7 +38,7 @@ public class CombinationFactory
             for (position = 0; position < values.length; position++)
             {
                 T valueToAdd = cipheredRow[position] == '0'
-                        ? emptyValue
+                        ? disabledValue
                         : decipher.get(position);
 
                 decipheredRow.add(position, valueToAdd);

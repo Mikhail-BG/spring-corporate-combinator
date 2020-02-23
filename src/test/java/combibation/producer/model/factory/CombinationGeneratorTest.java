@@ -1,4 +1,4 @@
-package combibation.producer;
+package combibation.producer.model.factory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,31 +7,29 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CombinationProducerTest
+import combibation.producer.model.CombinationGenerator;
+
+public class CombinationGeneratorTest
 {
     @Test
-    public void CombinationProducerBooleanTest()
+    public void generateBooleanCombinationTest()
     {
-        char[][] actualCharArray = (CombinationFactory.generateBooleanCombination(2));
-        char[][] expectedCharArray = {{'0', '0'}, {'0', '1'}, {'1', '0'}, {'1', '1'}};
-
-        System.out.println(Arrays.deepToString(actualCharArray));
+        final char[][] actualCharArray = (CombinationGenerator.generateBooleanCombination(2));
+        final char[][] expectedCharArray = {{'0', '0'}, {'0', '1'}, {'1', '0'}, {'1', '1'}};
 
         Assert.assertArrayEquals("Arrays are not equal", expectedCharArray, actualCharArray);
     }
 
     @Test
-    public void CombinationProducerParametrisedTest()
+    public void generateParametrisedCombinationTest()
     {
-        List<List<String>> actualCharArray =
-                (CombinationFactory.generateOnOffCombination("0", "1", "2"));
-        List<List<String>> expectedCharArray = new ArrayList<>();
+        final List<List<String>> actualCharArray =
+                (CombinationGenerator.generateOnOffCombination("0", "1", "2"));
+        final List<List<String>> expectedCharArray = new ArrayList<>();
         expectedCharArray.add(Arrays.asList("0", "0"));
         expectedCharArray.add(Arrays.asList("0", "2"));
         expectedCharArray.add(Arrays.asList("1", "0"));
         expectedCharArray.add(Arrays.asList("1", "2"));
-
-        System.out.println(actualCharArray);
 
         int rowCounter = 0;
         for (List<String> expectedRow : expectedCharArray)
